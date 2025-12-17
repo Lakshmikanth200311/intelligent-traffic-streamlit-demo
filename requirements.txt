@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+streamlit
+ultralytics
+opencv-python-headless
+numpy
+pydantic
+pydantic-settings
+python-multipart
+websockets
+scipy
+matplotlib
+pillow
