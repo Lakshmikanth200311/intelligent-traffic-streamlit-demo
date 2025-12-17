@@ -23,7 +23,8 @@ if uploaded_video:
 
     if st.button("Run Detection"):
         with st.spinner("Running YOLOv8 detection..."):
-            output_path, counts = process_video(input_path)
+            st.success("Detection completed ✅")
+            st.json(counts.dict())
 
         st.success("Detection completed ✅")
         st.video(output_path)
