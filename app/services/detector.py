@@ -1,4 +1,4 @@
-import cv2
+
 import numpy as np
 from ultralytics import YOLO
 from typing import List, Tuple, Optional
@@ -16,6 +16,7 @@ class YOLODetector:
     
     def detect(self, frame: np.ndarray) -> List[Detection]:
         """Detect vehicles in frame"""
+        import cv2
         try:
             results = self.model(
                 frame,

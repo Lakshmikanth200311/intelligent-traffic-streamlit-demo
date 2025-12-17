@@ -1,10 +1,11 @@
-import cv2
+
 import os
 from app.services.detector import YOLODetector
 from app.services.counter import LineCrossingCounter
 from app.models.schemas import CountingLine, Point, Approach
 
 def process_video(input_video_path: str, output_dir="uploads/outputs"):
+    import cv2
     os.makedirs(output_dir, exist_ok=True)
 
     output_path = os.path.join(

@@ -1,4 +1,4 @@
-import cv2
+
 import asyncio
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -18,6 +18,7 @@ class VideoStreamer:
 
     async def get_video_stream(self, approach: str):
         """Generate video stream with YOLO detection overlay"""
+        import cv2
         try:
             # Get the video source for this approach
             video_source = await self._get_video_source(approach)

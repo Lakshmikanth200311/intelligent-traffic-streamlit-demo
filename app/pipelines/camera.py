@@ -1,4 +1,4 @@
-import cv2
+
 import asyncio
 from app.services.detector import YOLODetector
 from app.services.counter import LineCrossingCounter
@@ -40,6 +40,7 @@ class CameraPipeline:
         
     async def start(self):
         """Start the camera pipeline with real video processing"""
+        import cv2
         self.is_running = True
         
         # Extract video source from config
