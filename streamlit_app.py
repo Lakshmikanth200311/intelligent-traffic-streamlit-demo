@@ -2,7 +2,10 @@ import streamlit as st
 import os
 from app.main import process_video
 
-st.set_page_config(page_title="Intelligent Traffic Monitoring", layout="centered")
+st.set_page_config(
+    page_title="Intelligent Traffic Monitoring",
+    layout="centered"
+)
 
 st.title("🚦 Intelligent Traffic Monitoring System")
 st.write("Real-time Vehicle Detection & Counting using YOLOv8")
@@ -19,15 +22,23 @@ if uploaded_video:
     with open(input_path, "wb") as f:
         f.write(uploaded_video.read())
 
+    st.subheader("Uploaded Video")
     st.video(input_path)
 
     if st.button("Run Detection"):
         with st.spinner("Running YOLOv8 detection..."):
-            st.success("Detection completed ✅")
-            st.json(counts.dict())
+            output_path, counts = process_video(input_path)
 
         st.success("Detection completed ✅")
+
+        st.subheader("Processed Output Video")
         st.video(output_path)
 
         st.subheader("Vehicle Counts")
-        st.json(counts.dict())
+        st.write({
+            "Cars": counts.car,
+            "Motorcycles": counts.motorcycle,
+            "Buses": counts.bus,
+            "Trucks": counts.truck,
+            "Total": counts.total
+        })
